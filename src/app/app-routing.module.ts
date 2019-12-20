@@ -1,3 +1,4 @@
+import { HomeLoggedModule } from './home-logged/home-logged.module';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
@@ -14,6 +15,10 @@ const routes: Routes = [
   {
     path: 'list',
     loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
+  },
+  {
+    path: 'homeLogged',
+    loadChildren: () => import('./home-logged/home-logged.module').then(m => m.HomeLoggedModule)
   }
 ];
 
