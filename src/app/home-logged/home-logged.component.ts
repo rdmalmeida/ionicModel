@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeLoggedComponent implements OnInit {
 
-  constructor(public menuCtrl: MenuController) { }
+  constructor(private menuCtrl: MenuController) { }
 
   ngOnInit() {
     this.menuCtrl.isEnabled().then((ativo) => {

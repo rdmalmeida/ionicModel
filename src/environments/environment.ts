@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  API: 'http://192.168.43.50:8080/api/'
+  //API: 'http://192.168.43.50:8080/api/'
+  API: 'http://10.94.4.32:8080/api/'
 };
 
 /*

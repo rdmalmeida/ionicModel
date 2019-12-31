@@ -1,7 +1,8 @@
+import { MenuController } from '@ionic/angular';
 import { environment } from '../../environments/environment';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
-import { take, tap } from 'rxjs/operators';
+import { take, tap, timeout } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -18,22 +19,21 @@ export class LoginPage implements OnInit {
 
   private token: string;
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) { }
 
 
 
   ngOnInit() {
-
   }
 
   doure() {
-    this.router.navigate(['home']);
-    /*
+    //this.router.navigate(['home']);
+
     this._doure().subscribe((header) => {
       alert(this.token);
       this.router.navigate(['home']);
-    }, () => alert('erro'));
-    */
+    }, (a) => this.handleError(a));
+
   }
 
   _doure(): Observable < any > {
@@ -42,17 +42,18 @@ export class LoginPage implements OnInit {
       observe: 'response'
      })
      .pipe(take(1))
-       .pipe(
-          tap( response => {
-            this.token = response.headers.get('Authorization');
-            console.log(this.token);
-            return response;
-          }));
+       .pipe( timeout(900) )
+         .pipe(
+            tap( response => {
+              this.token = response.headers.get('Authorization');
+              console.log(this.token);
+              return response;
+            }));
 
   }
 
-    handleError() {
-      alert('erro');
+    handleError(a) {
+      alert('Login ou Senha Inválidos' + a);
     }
 
 }

@@ -1,0 +1,2 @@
+setar timeout padrao app rxjs
+
