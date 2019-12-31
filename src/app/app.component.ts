@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
+import { Platform, MenuController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
@@ -9,7 +9,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
+
   public appPages = [
     {
       title: 'Home',
@@ -26,9 +27,16 @@ export class AppComponent {
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    public menuCtrl: MenuController
   ) {
     this.initializeApp();
+  }
+
+  ngOnInit(): void {
+    this.menuCtrl.enable(false, 'menu1');
+    this.menuCtrl.isEnabled().then((a) => console.log('isMenuEnabled' + a));
+    this.menuCtrl.swipeGesture(false, 'menu1').then((a) => console.log('desativando menu::' + a));
   }
 
   initializeApp() {

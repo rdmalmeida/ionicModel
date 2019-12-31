@@ -1,3 +1,4 @@
+import { MenuController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,8 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeLoggedComponent implements OnInit {
 
-  constructor() { }
+  constructor(public menuCtrl: MenuController) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.menuCtrl.isEnabled().then((ativo) => {
+      if (!ativo) {
+        this.menuCtrl.enable(true, 'menu1');
+        this.menuCtrl.swipeGesture(true, 'menu1').then((a) => console.log('ativando rolagem menu::' + a));
+      }
+    });
+  }
 
 }
