@@ -1,2 +1,3 @@
 setar timeout padrao app rxjs
+generic handler for double submit 
 
