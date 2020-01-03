@@ -1,30 +1,80 @@
 <ion-content>
-  <ion-card class="welcome-card">
-    <img src="/assets/shapes.svg" alt=""/>
-    <ion-card-header>
-      <ion-card-subtitle>Get Started</ion-card-subtitle>
-      <ion-card-title>Welcome to Ionic</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-        
-            <form (ngSubmit)="doure()">
-                
-                <ion-item>
-                    <ion-label>login</ion-label>
-                    <ion-input type="text" [(ngModel)]="user.username" name="login"></ion-input>
-                  </ion-item>
-                  <ion-item>
-                    <ion-label>senha</ion-label>
-                    <ion-textarea [(ngModel)]="user.password" name="senha"></ion-textarea>
-                  </ion-item>
-                <ion-button type="submit" expand="block" color="success" >OK</ion-button>
-            </form>
-    </ion-card-content>
-  </ion-card>
-
-
-  <!--ion-buttons-- slot="start">
-    <ion-menu-button></ion-menu-button>
-  </!--ion-buttons-->
-
-  </ion-content>
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col class="ion-align-self-center" size-md="6" size-lg="5" size-xs="12">
+          <ion-card class="welcome-card">
+            <img src="" alt=""/>
+            <ion-card-header>
+              <ion-card-subtitle></ion-card-subtitle>
+              <ion-card-title></ion-card-title>
+            </ion-card-header>
+            <ion-grid>
+              <ion-row class="ion-justify-content-center">
+                <ion-col class="ion-align-self-center">
+                  <div class="ion-text-center">
+                    <h3>Entre com suas credenciais:</h3>
+                  </div>
+                  <ion-card-content>    
+                    <form (ngSubmit)="doure()" id="formularioLogin" #formularioLogin >           
+                        <ion-item>
+                            <ion-label>Login&nbsp;&nbsp;:</ion-label>
+                            <ion-input type="text" [(ngModel)]="user.username" name="login" required></ion-input>
+                          </ion-item>
+                          <ion-item>
+                            <ion-label>Senha:</ion-label>
+                            <ion-input type="password" [(ngModel)]="user.password" name="senha" required></ion-input>
+                          </ion-item>
+                          <div class="ion-text-center">
+                            <span>&nbsp; {{errorMsg}} </span>
+                            <ion-button style="padding-top: 5px;" type="submit" expand="block" color="primary" >OK</ion-button>
+                          </div>
+                    </form>
+                   </ion-card-content>
+                </ion-col>                
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <div class="ion-text-center">
+                    <h6><a (click)="showCadastro()">Não tem cadastro? Crie sua conta!</a></h6>
+                  </div>    
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <form  (ngSubmit)="saveUser(myForm, myBtn)" #form="ngForm" [hidden]="!showRegisterForm" #myForm="ngForm">
+                    <ion-grid>
+                      <ion-row class="ion-justify-content-center">
+                        <ion-col class="ion-align-self-center">
+                          <div class="ion-text-center">
+                            <h3>Minhas Informações:</h3>
+                          </div>
+                          <div class="ion-padding">
+                            <ion-item>
+                              <ion-input  [(ngModel)]="newUser.username" type="text" placeholder="Login" name="login" required></ion-input>
+                            </ion-item>
+                            <ion-item>
+                              <ion-input [(ngModel)]="newUser.email" type="email" placeholder="seu@email.com.br" name="email" required></ion-input>
+                            </ion-item>
+                            <ion-item>
+                              <ion-input  [(ngModel)]="newUser.password" type="password" placeholder="Senha"  name="password" required></ion-input>
+                            </ion-item>
+                            <ion-item>
+                              <ion-input [(ngModel)]="newUser.confirm" type="password" placeholder="Senha novamente" name="confirm" required></ion-input>
+                            </ion-item>
+                            <div class="ion-text-center">
+                              <span>&nbsp; {{errorMsg2}} </span>
+                              <ion-button type="submit" expand="block" #myBtn>Cadastro</ion-button>
+                            </div>                          
+                          </div>
+                        </ion-col>
+                      </ion-row>
+                  </ion-grid>           
+                </form>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
