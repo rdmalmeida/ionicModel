@@ -15,9 +15,9 @@
                     <h3>Entre com suas credenciais:</h3>
                   </div>
                   <ion-card-content>    
-                    <form (ngSubmit)="doure()" id="formularioLogin" #formularioLogin >           
+                    <form (ngSubmit)="logar()" id="formularioLogin" #formularioLogin >           
                         <ion-item>
-                            <ion-label>Login&nbsp;&nbsp;:</ion-label>
+                            <ion-label>&nbsp;Login&nbsp;:</ion-label>
                             <ion-input type="text" [(ngModel)]="user.username" name="login" required></ion-input>
                           </ion-item>
                           <ion-item>
@@ -27,6 +27,9 @@
                           <div class="ion-text-center">
                             <span>&nbsp; {{errorMsg}} </span>
                             <ion-button style="padding-top: 5px;" type="submit" expand="block" color="primary" >OK</ion-button>
+                          </div>
+                          <div class="ion-text-center">
+                            <a >Esqueceu a senha?</a>
                           </div>
                     </form>
                    </ion-card-content>

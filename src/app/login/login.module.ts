@@ -1,3 +1,4 @@
+import { LoginService } from './login.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -20,6 +21,7 @@ import { LoginPage } from './login.page';
       }
     ])
   ],
-  declarations: [LoginPage]
+  declarations: [LoginPage],
+  providers: [LoginService]
 })
 export class LoginPageModule {}
